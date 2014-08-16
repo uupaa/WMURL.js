@@ -13,8 +13,10 @@ onmessage = function(event) {
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.task.js/lib/Task.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.test.js/lib/Test.js");
     importScripts(MESSAGE.BASE_DIR + "../lib/WMURL.js");
+    importScripts(MESSAGE.BASE_DIR + "../lib/WMURL.encode.js");
+    importScripts(MESSAGE.BASE_DIR + "../lib/WMURL.decode.js");
     importScripts(MESSAGE.BASE_DIR + "../release/WMURL.min.js");
-    importScripts(MESSAGE.BASE_DIR + "./test.js?_=1408142726879");
+    importScripts(MESSAGE.BASE_DIR + "./test.js?_=1408187509641");
 
     self.postMessage({ error: self.errorMessage || "" });
 };
@@ -27,7 +29,9 @@ onmessage = function(event) {
 <script src="../node_modules/uupaa.task.js/lib/Task.js"></script>
 <script src="../node_modules/uupaa.test.js/lib/Test.js"></script>
 <script src="../lib/WMURL.js"></script>
+<script src="../lib/WMURL.encode.js"></script>
+<script src="../lib/WMURL.decode.js"></script>
 <script src="../release/WMURL.min.js"></script>
-<script src="./test.js?=_1408142726879"></script>
+<script src="./test.js?=_1408187509641"></script>
 
 </body></html>
