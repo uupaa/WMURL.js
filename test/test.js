@@ -19,6 +19,7 @@ var test = new Test("WMURL", {
         testWMURLParse5,
         testWMURLParse6,
         testWMURLValid,
+        testWMURLValidArray,
         testWMURLParseAndBuild,
         testWMURLIsAbsolute,
         testWMURLIsRelative,
@@ -252,6 +253,28 @@ function testWMURLValid(test, pass, miss) {
     } else {
         test.done(miss());
     }
+}
+function testWMURLValidArray(test, pass, miss) {
+
+    var invalidSource = [
+            "<html>",
+            "123://dir/file.exe?key=value#hash",
+        ];
+    var validSource = [
+            "http://example.com:port/dir/file.exe?key=value#hash",
+            "ht.tp://example.com:port/dir/file.exe?key=value#hash",
+            "./dir/file.exe?key=value#hash",
+            "C:/dir/file.exe?key=value#hash",
+            "file://C:/dir/file.exe?key=value#hash",
+        ];
+
+    if ( !WMURL.valid(invalidSource) ) {
+        if ( WMURL.valid(validSource) ) {
+            test.done(pass());
+            return;
+        }
+    }
+    test.done(miss());
 }
 function testWMURLParseAndBuild(test, pass, miss) {
 

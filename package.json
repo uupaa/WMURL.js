@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.wmurl.js",
-  "version":        "0.0.2",
+  "version":        "0.0.3",
   "description":    "URL parse and build.",
   "url":            "https://github.com/uupaa/WMURL.js",
   "keywords":       ["URL", "util", "uupaa", "WebModule", "Unstable"],
