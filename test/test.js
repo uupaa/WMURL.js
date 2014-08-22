@@ -248,7 +248,7 @@ function testWMURLValid(test, pass, miss) {
 
     var invalidURL = "http://example.com:port/dir/file.exe?key=value#hash";
 
-    if ( WMURL.valid(invalidURL) ) {
+    if ( WMURL.isValid(invalidURL) ) {
         test.done(pass());
     } else {
         test.done(miss());
@@ -268,8 +268,8 @@ function testWMURLValidArray(test, pass, miss) {
             "file://C:/dir/file.exe?key=value#hash",
         ];
 
-    if ( !WMURL.valid(invalidSource) ) {
-        if ( WMURL.valid(validSource) ) {
+    if ( !WMURL.isValid(invalidSource) ) {
+        if ( WMURL.isValid(validSource) ) {
             test.done(pass());
             return;
         }
