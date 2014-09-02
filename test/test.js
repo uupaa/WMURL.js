@@ -30,6 +30,7 @@ var test = new Test("WMURL", {
         testWMURLQueryString,
         testEncodeURIComponent,
         testDecodeURIComponent,
+        testWMURLCacheBustring,
     ]);
 
 /*
@@ -431,6 +432,37 @@ function testDecodeURIComponent(test, pass, miss) {
     var revert = decodeURIComponent(code);
 
     if (source === revert) {
+        test.done(pass());
+    } else {
+        test.done(miss());
+    }
+}
+
+function testWMURLCacheBustring(test, pass, miss) {
+
+    var testCase = [
+            "http://example.com/",
+            "http://example.com/?a=b",
+            "http://example.com/?a=b&c=d",
+            "http://example.com/?a=b&c=d#foo",
+        ];
+
+    var ok = testCase.every(function(src) {
+                var url = WMURL.cacheBusting(src, "xyz");
+
+                if (!WMURL.isValid(url)) {
+                    return false;
+                }
+
+                var queryObject = WMURL.parseQuery(url);
+
+                if (queryObject.xyz) {
+                    return true;
+                }
+                return false;
+            });
+
+    if (ok) {
         test.done(pass());
     } else {
         test.done(miss());
