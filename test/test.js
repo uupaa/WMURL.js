@@ -448,7 +448,7 @@ function testWMURLCacheBustring(test, pass, miss) {
         ];
 
     var ok = testCase.every(function(src) {
-                var url = WMURL.cacheBusting(src, "xyz");
+                var url = WMURL.addCacheBustingKeyword(src, "xyz");
 
                 if (!WMURL.isValid(url)) {
                     return false;
