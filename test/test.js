@@ -81,7 +81,8 @@ function testWMURLParse(test, pass, miss) {
 
         // check extras properties
         if (obj.scheme   === "http:" &&
-            obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+          //obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+            obj.path     === "/dir1/dir2/file.ext?a=b;c=d" &&
             obj.dir      === "/dir1/dir2" &&
             obj.file     === "file.ext" &&
             obj.fragment === "#hash") {
@@ -112,7 +113,8 @@ function testWMURLParse2(test, pass, miss) {
 
         // check extras properties
         if (obj.scheme   === "" &&
-            obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+          //obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+            obj.path     === "/dir1/dir2/file.ext?a=b;c=d" &&
             obj.dir      === "/dir1/dir2" &&
             obj.file     === "file.ext" &&
             obj.fragment === "#hash") {
@@ -143,7 +145,8 @@ function testWMURLParse3(test, pass, miss) {
 
         // check extras properties
         if (obj.scheme   === "" &&
-            obj.path     === "./dir1/dir2/file.ext?a=b;c=d#hash" &&
+          //obj.path     === "./dir1/dir2/file.ext?a=b;c=d#hash" &&
+            obj.path     === "./dir1/dir2/file.ext?a=b;c=d" &&
             obj.dir      === "./dir1/dir2" &&
             obj.file     === "file.ext" &&
             obj.fragment === "#hash") {
@@ -174,7 +177,8 @@ function testWMURLParse4(test, pass, miss) {
 
         // check extras properties
         if (obj.scheme   === "file:" &&
-            obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+          //obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+            obj.path     === "/dir1/dir2/file.ext?a=b;c=d" &&
             obj.dir      === "/dir1/dir2" &&
             obj.file     === "file.ext" &&
             obj.fragment === "#hash") {
@@ -205,7 +209,8 @@ function testWMURLParse5(test, pass, miss) {
 
         // check extras properties
         if (obj.scheme   === "file:" &&
-            obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+          //obj.path     === "/dir1/dir2/file.ext?a=b;c=d#hash" &&
+            obj.path     === "/dir1/dir2/file.ext?a=b;c=d" &&
             obj.dir      === "/dir1/dir2" &&
             obj.file     === "file.ext" &&
             obj.fragment === "#hash") {
