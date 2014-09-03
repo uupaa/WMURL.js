@@ -462,6 +462,8 @@ function testWMURLCacheBustring(test, pass, miss) {
                 return false;
             });
 
+    WMURL.addCacheBustingKeyword(testCase[0]); // omit keyword
+
     if (ok) {
         test.done(pass());
     } else {
