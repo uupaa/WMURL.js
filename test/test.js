@@ -172,9 +172,9 @@ function testWMURLParse4(test, pass, miss) {
 
     if (obj.href     === href &&
         obj.protocol === "file:" &&
-        obj.origin   === "file://" &&
-        obj.host     === "" &&
-        obj.hostname === "" &&
+        obj.origin   === "file://localhost" &&
+        obj.host     === "localhost" &&
+        obj.hostname === "localhost" &&
         obj.port     === "" &&
         obj.username === "" &&
         obj.password === "" &&
@@ -352,7 +352,7 @@ function testWMURLResolveWithoutBasePath(test, pass, miss) {
         var obj = WMURL.parse(abs);
 
         if (/file|http/.test(obj.protocol) &&
-            obj.path === "/dir/file.ext") {
+            obj.path.lastIndexOf("/dir/file.ext") >= 0) {
 
             test.done(pass());
         } else {
