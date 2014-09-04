@@ -42,6 +42,12 @@ if (!_runOnWorker && _runOnBrowser) {
 }
  */
 
+if (global["Valid"]) {
+    test.add([
+        testValidRegisterTypes,
+    ]);
+}
+
 test.run().clone();
 
 
@@ -499,6 +505,8 @@ function testWMURLMatch(test, pass, miss) {
                      "http://example.com/dir3/a1/b1/c1/d1.png"),
         !WMURL.match("http://example.com/dir*/**/x1/**/*",
                      "http://example.com/dir3/a1/b1/c1/d1.png"),
+        WMURL.match("http://example.com/dir*/**/b1/**/*",
+                    "http://example.com/dir3/a1/b1/c1/d1.png"),
     ];
 
     if ( /false/.test(result.join(",")) ) {
@@ -508,6 +516,30 @@ function testWMURLMatch(test, pass, miss) {
     }
 }
 
+function testValidRegisterTypes(test, pass, miss) {
+
+    var validUrlStringArray = [
+            "http://example.com/a.png",
+            "http://example.com/a.png#hoge"
+        ];
+    var invalidUrlStringArray = [
+            "!http://example.com/a.png",
+            "http:///example.com/a.png#hoge"
+        ];
+
+    if (Valid.type(validUrlStringArray[0], "URLString")) {
+        if (!Valid.type(invalidUrlStringArray[0], "URLStringArray")) {
+            if (Valid.type(validUrlStringArray, "URLStringArray")) {
+                if (!Valid.type(invalidUrlStringArray, "URLStringArray")) {
+                    test.done(pass());
+                    return;
+                }
+            }
+        }
+    }
+    test.done(miss());
+    return;
+}
 
 })((this || 0).self || global);
 
