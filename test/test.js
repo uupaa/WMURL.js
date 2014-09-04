@@ -31,6 +31,7 @@ var test = new Test("WMURL", {
         testEncodeURIComponent,
         testDecodeURIComponent,
         testWMURLCacheBustring,
+        testWMURLMatch,
     ]);
 
 /*
@@ -475,6 +476,38 @@ function testWMURLCacheBustring(test, pass, miss) {
         test.done(miss());
     }
 }
+
+function testWMURLMatch(test, pass, miss) {
+
+    var result = [
+        WMURL.match("http://example.com/**/*.png",
+                    "http://example.com/dir1/dir2/file.png"),
+        WMURL.match("http://example.com/dir1/a.png",
+                    "http://example.com/dir1/a.png"),
+        WMURL.match("http://example.com/dir2/*.png",
+                    "http://example.com/dir2/a.png"),
+        WMURL.match("http://example.com/dir3/**/*",
+                    "http://example.com/dir3/a/b/c/d"),
+        WMURL.match("http://example.com/dir3/**/*",
+                    "http://example.com/dir3/a/b/c/d.png"),
+        WMURL.match("http://example.com/**",
+                    "http://example.com/dir3/a1/b1/c1/d1.png"),
+        WMURL.match("http://example.com/dir*/**/b1/**/*",
+                    "http://example.com/dir3/a1/b1/c1/d1.png"),
+
+        !WMURL.match("http://example.com/hoge/**",
+                     "http://example.com/dir3/a1/b1/c1/d1.png"),
+        !WMURL.match("http://example.com/dir*/**/x1/**/*",
+                     "http://example.com/dir3/a1/b1/c1/d1.png"),
+    ];
+
+    if ( /false/.test(result.join(",")) ) {
+        test.done(miss());
+    } else {
+        test.done(pass());
+    }
+}
+
 
 })((this || 0).self || global);
 
