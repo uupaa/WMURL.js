@@ -508,6 +508,10 @@ function testWMURLMatch(test, pass, miss) {
 
         WMURL.match("http://example.com/dir*/**/b1/**/*",
                     "http://example.com/dir3/a1/xx/b1/zz/c1/d1.png"),
+
+        WMURL.match("/**", "/dir3/a1/b1/c1/d1.png"),
+        WMURL.match("**/*.png", "dir3/a1/b1/c1/d1.png"),
+        !WMURL.match("**/*.gif", "dir3/a1/b1/c1/d1.png"),
     ];
 
     if ( /false/.test(result.join(",")) ) {
