@@ -512,6 +512,11 @@ function testWMURLMatch(test, pass, miss) {
         WMURL.match("/**", "/dir3/a1/b1/c1/d1.png"),
         WMURL.match("**/*.png", "dir3/a1/b1/c1/d1.png"),
         !WMURL.match("**/*.gif", "dir3/a1/b1/c1/d1.png"),
+
+        WMURL.match("./assets/1.png",
+                      "assets/1.png"),
+        WMURL.match(  "assets/1.png",
+                    "./assets/1.png"),
     ];
 
     if ( /false/.test(result.join(",")) ) {
